@@ -1,16 +1,23 @@
-# This is a sample Python script.
+import csv
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def read_data():
+    data = []
 
+    with open('sales.csv', 'r') as sales_csv:
+        spreadsheet = csv.DictReader(sales_csv)
+        for row in spreadsheet:
+            data.append(row)
+    return data
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def run():
+    data = read_data()
 
+    sales = []
+    for row in data:
+        sale = int(row['sales'])
+        sales.append(sale)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    total = sum(sales)
+    print('Total Sales:{}'.format(total))
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+run()
