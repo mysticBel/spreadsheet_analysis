@@ -94,9 +94,9 @@ def output_spreadsheet(total_months, total_sales, total_expenses, min_sale, max_
     output_data = [{'Summary': 'Total months', 'Value': total_months},
                    {'Summary': 'Total sales', 'Value': total_sales},
                    {'Summary': 'Total expenses', 'Value': total_expenses},
-                   {'Summary': 'Minimum sale', 'Value': min_sale},
-                   {'Summary': 'Maximum sale', 'Value': max_sale},
-                   {'Summary': 'Average sale', 'Value': average_sales},
+                   {'Summary': 'Lowest sale', 'Value': min_sale},
+                   {'Summary': 'Highest sale', 'Value': max_sale},
+                   {'Summary': 'Average sales', 'Value': average_sales},
                    {'Summary': 'Average expenditure', 'Value': average_expenses},
                    ]
 
