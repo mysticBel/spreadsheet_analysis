@@ -28,6 +28,20 @@ def calculate_expenses(data):
         total_expenses.append(int(monthly_expenses))
     return sum(total_expenses)
 
+# Calculate the average quantities
+def calculate_average(data):
+    sales = []
+    expenses = []
+    for row in data:
+        sales.append(int(row['sales']))
+        expenses.append(int(row['expenditure']))
+
+    average_sales = sum(sales) / len(sales)
+    average_expenses = sum(expenses) / len(expenses)
+
+    print(f"The average sales is {average_sales} \nThe average expenditure is {average_expenses}")
+    return average_sales, average_expenses
+
 def ask_data_by_month(data):
     month = input("Please enter the 3 first letters of a month to show data (eg. apr)").lower()
 
@@ -39,6 +53,8 @@ def ask_data_by_month(data):
 def run():
     data = read_data()
     calculate_sales(data)
+    calculate_average(data)
     ask_data_by_month(data)
+
 
 run()
