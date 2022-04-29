@@ -57,6 +57,18 @@ def calculate_min_max_sales(data):
     print(f"The lowest sale was {min_sale}")
     return min_sale, max_sale
 
+# Calculate monthly changes as a percentage
+# formula = (new_value-old_value)/old_value
+def monthly_changes(data):
+    listChanges = []
+    for i in range(1, len(data)):
+        previous_month = int(data[i-1]['sales'])
+        current_month = int(data[i]['sales'])
+        change_as_percentage = round(((current_month - previous_month) / previous_month) * 100, 2)
+        listChanges.append(change_as_percentage )
+    print(f"The monthly changes as percentage are {listChanges}")
+
+
 def ask_data_by_month(data):
     month = input("Please enter the 3 first letters of a month to show data (eg. apr)").lower()
 
@@ -70,7 +82,9 @@ def run():
     calculate_sales(data)
     calculate_average(data)
     calculate_min_max_sales(data)
+    monthly_changes(data)
     ask_data_by_month(data)
+
 
 
 run()
