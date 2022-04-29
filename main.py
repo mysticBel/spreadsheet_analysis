@@ -17,7 +17,7 @@ def calculate_sales(data):
         monthly_sales = row['sales']
         total_sales.append(int(monthly_sales))
     # 3. Output the total sales across all months , f string
-    print(f'The total sales across all {len(total_sales)} months are {sum(total_sales)}.')
+    print(f'The total sales across all {len(total_sales)} months were {sum(total_sales)}.')
     return len(total_sales), sum(total_sales)
 
 # Calculate total expenditures from the spreadsheet
@@ -36,11 +36,26 @@ def calculate_average(data):
         sales.append(int(row['sales']))
         expenses.append(int(row['expenditure']))
 
-    average_sales = sum(sales) / len(sales)
-    average_expenses = sum(expenses) / len(expenses)
+    average_sales = round(sum(sales) / len(sales), 2)
+    average_expenses = round(sum(expenses) / len(expenses), 2)
 
-    print(f"The average sales is {average_sales} \nThe average expenditure is {average_expenses}")
+    print(f"The average sales was {average_sales} \nThe average expenditure was {average_expenses}")
     return average_sales, average_expenses
+
+# Calculate the months with the highest and lowest sales
+def calculate_min_max_sales(data):
+    min_and_max_sales = []
+
+    for row in data:
+        min_and_max_sales.append(int(row['sales']))
+
+    #print(min_and_max_sales)
+    min_sale = min(min_and_max_sales)
+    max_sale = max(min_and_max_sales)
+
+    print(f"The highest sale was {max_sale}")
+    print(f"The lowest sale was {min_sale}")
+    return min_sale, max_sale
 
 def ask_data_by_month(data):
     month = input("Please enter the 3 first letters of a month to show data (eg. apr)").lower()
@@ -54,6 +69,7 @@ def run():
     data = read_data()
     calculate_sales(data)
     calculate_average(data)
+    calculate_min_max_sales(data)
     ask_data_by_month(data)
 
 
